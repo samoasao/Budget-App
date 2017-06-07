@@ -1,13 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Category } from './category';
 
-const CATEGORIES: Category[] = [
-	{id: 1, name:'Grocery', ammount: 180},
-	{id: 2, name:'Gas', ammount: 125},
-	{id: 3, name:'Mortgage', ammount: 1500},
-	{id: 4, name:'Utilites', ammount: 200},
+import { CategoryService } from './category.service';
 
-];
+
+//import { CATEGORIES } from './categories'
+
+
 
 @Component({
   selector: 'app-root',
@@ -15,7 +14,22 @@ const CATEGORIES: Category[] = [
 
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Budget App';
-  categories = CATEGORIES;
+  categories: Category[];
+  total: number;
+
+  constructor(private categoryService: CategoryService){}
+
+  ngOnInit():void{
+
+	this.categories = this.categoryService.getCategories();
+	this.total = this.categoryService.getTotal();
+
+  }
+
+ // categories = CATEGORIES;
+
+ //*ng
+
 }
