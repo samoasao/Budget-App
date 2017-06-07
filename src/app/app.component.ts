@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Category } from './category';
 
 import { CategoryService } from './category.service';
@@ -14,19 +14,12 @@ import { CategoryService } from './category.service';
 
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'Budget App';
-  categories: Category[];
-  total: number;
+export class AppComponent  {
+  title = 'Wright Family Budget';
+  
 
-  constructor(private categoryService: CategoryService){}
 
-  ngOnInit():void{
-
-	this.categories = this.categoryService.getCategories();
-	this.total = this.categoryService.getTotal();
-
-  }
+  
 
  // categories = CATEGORIES;
 

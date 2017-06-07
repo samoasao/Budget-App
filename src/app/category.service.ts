@@ -5,12 +5,18 @@ import { CATEGORIES } from './categories';
 @Injectable()
 
 export class CategoryService{
+	categories:Category[];
+
 	getCategories(): Category[]{
 		return CATEGORIES;
 
 	}
 
 	getTotal(): number{
-		return 20;
+		
+		this.categories = this.getCategories();
+
+		return this.categories.reduce((prev, category) => prev + category.currentBalance, 0);
+		//return 20;
 	}
 }

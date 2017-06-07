@@ -1,0 +1,14 @@
+<div>
+	<ul class="list-group">
+		<li class="list-group-item" *ngFor="let category of categories">{{category.name}} 
+			<span class="badge">
+				{{category.currentBalance | currency : 'USD' : true}}
+			</span>
+		</li>
+
+	</ul>
+</div>
+
+<div class="text-right">
+	<label>Total: </label> {{total | currency : 'USD' : true}}
+</div>

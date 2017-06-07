@@ -1,22 +1,18 @@
-<!--The whole content below can be removed with the new code.-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-  <div style="text-align:center">
+<div class="text-center">
   <h1>
-    Welcome to {{title}}!!
+    {{title}}
   </h1>
-  </div>
+</div>
 
-  <div>
-    <ul>
-      <li *ngFor="let category of categories">{{category.name}} {{category.ammount | currency : 'USD' : true}}</li>
+<div class="container">
+  <my-categories></my-categories>
+</div>
 
-    </ul>
-  </div>
 
-  <div>
-    <label>Total: </label> {{total | currency : 'USD' : true}}
-  </div>
- 
+
+
 
 
 
