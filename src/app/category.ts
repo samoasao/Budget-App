@@ -1,5 +1,7 @@
 export class Category {
-	id: number;
-	name: string;
-	currentBalance: number;
+	constructor(
+	public id: number,
+	public name: string,
+	public currentBalance: number
+	){}
 }

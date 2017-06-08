@@ -1,43 +1,62 @@
 <div>
 	<div class="text-right">
-	<button *ngIf="editMode" (click)="saveButtonClick()">Save</button>
-	<button *ngIf="!editMode" (click)="editButtonClick()">Edit</button>
+		<button class="btn btn-default btn-sm" *ngIf="editMode" (click)="saveButtonClick()">
+			<span class ="glyphicon glyphicon-floppy-disk"></span>
+		</button>
+		<button class="btn btn-default btn-sm" *ngIf="!editMode" (click)="editButtonClick()">
+			<span class ="glyphicon glyphicon-pencil"></span>
+
+
+		</button>
+		<button class="btn btn-default btn-sm" (click)="addButtonClick()">
+			<span class ="glyphicon glyphicon-plus"></span>
+		</button>
 	</div>
 	<table class="table table-striped"> 
-	<thead>
-	<tr>
-		<th>
-		Account Name 
+		<thead>
+			<tr>
+				<th>
+					Account Name 
 
-		</th>
-		<th class="text-right">
-			Current Balance
-		</th>
-	</tr>
-	</thead>
-	<tbody>
-		<tr *ngFor="let category of categories">
+				</th>
+				<th class="text-right">
+					Current Balance
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let category of categories">
 
-			<td>
+				<td>
 
-			<div *ngIf="!editMode"> {{category.name}} </div>
-			<input *ngIf="editMode" [(ngModel)]="category.name" placeholder="name">
-			</td>
-			<td class="text-right">
-				<div *ngIf="!editMode"> 
-					<span class="badge"> 
-						{{category.currentBalance | currency : 'USD' : true}}
-					</span>
-				</div>
-				<div *ngIf="editMode"> 
-					<label>$</label><input type="number" [(ngModel)]="category.currentBalance" placeholder="name">
-					
-				</div>
+					<div *ngIf="!editMode"> {{category.name}} </div>
+					<input *ngIf="editMode" [(ngModel)]="category.name" placeholder="name">
+				</td>
+				<td class="text-right">
+					<div *ngIf="!editMode"> 
+						<span class="badge"> 
+							{{category.currentBalance | currency : 'USD' : true}}
+						</span>
+					</div>
+					<div *ngIf="editMode"> 
+						<label>$</label><input type="number" [(ngModel)]="category.currentBalance" placeholder="name">
 
-			</td>
-		</tr> 
-	</tbody>
-<!--This Comment is on Table-->
+					</div>
+
+				</td>
+			</tr> 
+			<tr *ngIf="addMode">
+				<td>
+					<input #categoryName placeholder="Account Name">
+				</td>
+				<td class="text-right">
+					<label>$</label><input type="number" #categoryBalance >
+					<button class="btn btn-default btn-xs" (click)="addCategoryClick(categoryName.value, categoryBalance.value)">
+						<span class ="glyphicon glyphicon-plus"></span>
+					</button>
+				</td>
+			</tr>
+		</tbody>
 	</table>
 </div> 
 
