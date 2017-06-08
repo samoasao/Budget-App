@@ -14,9 +14,10 @@ export class CategoryService{
 
 	getTotal(): number{
 		
-		this.categories = this.getCategories();
+		//this.categories = this.getCategories();
 
-		return this.categories.reduce((prev, category) => prev + category.currentBalance, 0);
+		//return CATEGORIES.length;
+		return CATEGORIES.reduce((prev, category) => prev + category.currentBalance, 0);
 		//return 20;
 	}
 }
