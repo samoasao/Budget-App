@@ -1,12 +1,23 @@
 <div>
-	<ul class="list-group"> 
-		<li class="list-group-item" *ngFor="let category of categories">{{category.name}} 
-			<span class="badge">
-				{{category.currentBalance | currency : 'USD' : true}}
-			</span>
-		</li>
+	<table class="table table-striped"> 
+	<thead>
+	<tr>
+		<th>Account Name</th>
+		<th>Current Balance</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let category of categories">
+			<td>{{category.name}} </td>
+			<td>
+				<span class="badge"> 
+					{{category.currentBalance | currency : 'USD' : true}}
+				</span>
+			</td>
+		</tr> 
+	</tbody>
 <!--This Comment is on Table-->
-	</ul>
+	</table>
 </div> 
 
 <div class="text-right">
