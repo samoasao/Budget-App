@@ -6,9 +6,9 @@ import { CategoryService } from './category.service'
 
 
 @Component({
-  
-  selector: 'my-categories',
-  templateUrl: './categories.component.html'
+	
+	selector: 'my-categories',
+	templateUrl: './categories.component.html'
 
 })
 
@@ -22,7 +22,7 @@ export class CategoriesComponent{
 
 	ngOnInit():void{
 		this.categories = this.categoryService.getCategories();
-		this.setTotal();
+		this.setTotal(this.categories);
 		this.editMode = false;
 		this.addMode = false;
 	}
@@ -43,15 +43,19 @@ export class CategoriesComponent{
 		
 		name = name.trim();
 		if (!name) { return; }
-   		if (!balance) {balance = 0}
-   		balance = +balance;
+		if (!balance) {balance = 0}
+			balance = +balance;
 		this.categoryService.addCategory(name, +balance);
 		this.setTotal();
 		this.addMode = false;
 	}
 
-	setTotal():void{
-		this.total = this.categoryService.getTotal();
+	setTotal(catAr?:Category[]):void{
+		if(!catAr){
+			catAr = this.categoryService.getCategories();
+		}
+
+		this.total = this.categoryService.getTotal(catAr);
 	}
 
 	saveButtonClick(): void {

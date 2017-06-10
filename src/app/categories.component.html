@@ -1,13 +1,13 @@
 <div>
 	<div class="text-right">
-		<button class="btn btn-default btn-sm" *ngIf="editMode" (click)="saveButtonClick()">
+		<button class="btn btn-default btn-sm" *ngIf="editMode; else pencilButton" (click)="saveButtonClick()">
 			<span class ="glyphicon glyphicon-floppy-disk"></span>
 		</button>
-		<button class="btn btn-default btn-sm" *ngIf="!editMode" (click)="editButtonClick()">
-			<span class ="glyphicon glyphicon-pencil"></span>
-
-
-		</button>
+		<ng-template #pencilButton>
+			<button class="btn btn-default btn-sm" *ngIf="!editMode" (click)="editButtonClick()">
+				<span class ="glyphicon glyphicon-pencil"></span>
+			</button>
+		</ng-template>
 		<button class="btn btn-default btn-sm" (click)="addButtonClick()">
 			<span class ="glyphicon glyphicon-plus"></span>
 		</button>
@@ -29,7 +29,7 @@
 
 				<td>
 
-					<div *ngIf="!editMode"> {{category.name}} </div>
+					<div *ngIf="!editMode"> {{category.id}} {{category.name}} </div>
 					<input *ngIf="editMode" [(ngModel)]="category.name" placeholder="name">
 				</td>
 				<td class="text-right">

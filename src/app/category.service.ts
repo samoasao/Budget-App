@@ -2,29 +2,31 @@ import { Injectable } from '@angular/core';
 import { Category } from './category';
 import { CATEGORIES } from './categories';
 
+
+
 @Injectable()
 
 export class CategoryService{
-	categories:Category[];
 	model:Category;
+	private nextID: number;
 
-	getCategories(): Category[]{
-		return CATEGORIES;
-
+	constructor(){
+		this.nextID = CATEGORIES.length + 1;
 	}
 
-	getTotal(): number{
-		
-		//this.categories = this.getCategories();
+	//return the current list of categories from the data source
+	getCategories(): Category[]{
+		//TODO: get from Datasource.
+		return CATEGORIES;
+	}
 
-		//return CATEGORIES.length;
-		return CATEGORIES.reduce((prev, category) => prev + category.currentBalance, 0);
-		//return 20;
+	//return the total ammount of the current balances
+	getTotal(categories:Category[]): number{
+		return categories.reduce((prev, category) => prev + category.currentBalance, 0);
 	}
 
 	addCategory(name:string, balance:number): Category{
-		console.log(balance);
-		this.model = new Category(1, name, balance);
+		this.model = new Category(this.nextID++, name, balance);
 		CATEGORIES.push(this.model);
 		return this.model;
 	}
